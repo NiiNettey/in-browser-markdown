@@ -1,0 +1,129 @@
+/* Resetting default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  /* Navbar left side */
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .menu-icon {
+    margin-right: 10px;
+    font-size: 24px;
+  }
+  
+  /* Navbar right side */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Additional styles */
+  .logo {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .document-name {
+    margin-right: 20px;
+  }
+  
+  /* Button styles */
+  .delete-button,
+  .save-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .save-button {
+    background-color: #bc4325;
+    margin-left: 10px;
+  }
+  /* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+  
+  .sidebar-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar-menu li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-menu a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+
+  /* Content styles */
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide into two equal parts */
+    grid-gap: 20px; /* Gap between the two sections */
+  }
+  
+  .content-left,
+  .content-right {
+    padding: 20px;
+  }
+  
+  .content-left h2,
+  .content-right h2 {
+    margin-bottom: 10px;
+  }
+  
+  #markup-input {
+    width: 100%;
+    height: calc(100vh - 40px); /* Height of the viewport minus padding */
+    resize: vertical;
+  }
+  
+  #preview-output {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: calc(100vh - 40px); /* Height of the viewport minus padding */
+    overflow-y: auto;
+  }
+  
