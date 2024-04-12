@@ -86,3 +86,11 @@ function addNewDocument(): void {
   createNewDocDiv(Date.now(), `untitled-document(${count}).md`, untitledText);
 }
 
+// function to update Document Name
+function updateDocumentName(): void {
+  const docnameUneditables = document.querySelectorAll(".doc-name-uneditable");
+
+  for (const element of docnameUneditables) {
+      element.innerHTML = docNameEditable.value;
+  }
+}
