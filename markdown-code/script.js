@@ -1,4 +1,5 @@
 "use strict";
+//function for toggling themes 
 function toggleTheme() {
     var _a;
     (_a = document.getElementById("toggle")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
@@ -10,13 +11,7 @@ function themeOnLoad() {
         document.getElementsByTagName('body')[0].classList.toggle("dark-theme");
     }
 }
-toggleTheme();
-window.onload = themeOnLoad();
-// --------------------------- Rename, load, add, save changes -------------------------- //
-const welcomeText = "# Welcome to Markdown\n\nMarkdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.\n\n## How to use this?\n\n1. Write markdown in the markdown editor window\n2. See the rendered markdown in the preview window\n\n### Features\n\n- Create headings, paragraphs, links, blockquotes, inline-code, code blocks, and lists\n- Name and save the document to access again later\n- Choose between Light or Dark mode depending on your preference\n\n> This is an example of a blockquote. If you would like to learn more about markdown syntax, you can visit this [markdown cheatsheet](https://www.markdownguide.org/cheat-sheet/).\n\n#### Headings\n\nTo create a heading, add the hash sign (#) before the heading. The number of number signs you use should correspond to the heading level. You'll see in this guide that we've used all six heading levels (not necessarily in the correct way you should use headings!) to illustrate how they should look.\n\n##### Lists\n\nYou can see examples of ordered and unordered lists above.\n\n###### Code Blocks\n\nThis markdown editor allows for inline-code snippets, like this: `<p>I'm inline</p>`. It also allows for larger code blocks like this:\n\n```\n<main>\n  <h1>This is a larger code block</h1>\n</main>\n```";
-const untitledText = "# This is a new untitled document.\n\nStart typing here to see preview and use the editor.";
-const docNameEditable = document.querySelector("#doc-name-editable"), saveBtn = document.querySelector("#save-change-btn"), addNewDocBtn = document.querySelector("#new-doc-btn"), docNavSection = document.querySelector(".docs-nav-section"), allDocs = document.querySelector(".all-docs");
-let markdownInput = document.getElementById('markdown-input'), preview = document.getElementById('preview-content');
+// Markdown functions
 function mark(markdown) {
     // Regular expressions to match Markdown syntax
     const headingRegex = /^(#{1,6})\s+(.*)/;
@@ -45,7 +40,11 @@ function mark(markdown) {
     markdown = markdown.replace(imageRegex, '<img src="$2" alt="$1">');
     return markdown;
 }
+// Preview display Function
 function displayPreview(dpname, dpcontent) {
+    const docNameEditable = document.querySelector("#doc-name-editable");
+    const markdownInput = document.getElementById('markdown-input');
+    const preview = document.getElementById('preview-content');
     if (docNameEditable && markdownInput && preview) {
         docNameEditable.value = dpname;
         markdownInput.value = dpcontent;
@@ -53,6 +52,8 @@ function displayPreview(dpname, dpcontent) {
     }
 }
 function updatePreview() {
+    const markdownInput = document.getElementById('markdown-input');
+    const preview = document.getElementById('preview-content');
     if (markdownInput && preview) {
         markdownInput.addEventListener('input', () => {
             if (preview) {
@@ -60,16 +61,4 @@ function updatePreview() {
             }
         });
     }
-}
-// Other functions remain unchanged
-updatePreview();
-loadDocs();
-if (addNewDocBtn) {
-    addNewDocBtn.addEventListener('click', addNewDoc);
-}
-if (docNameEditable) {
-    docNameEditable.addEventListener("input", updateDocNameUneditable);
-}
-if (saveBtn) {
-    saveBtn.addEventListener('click', saveChangestoLS);
 }

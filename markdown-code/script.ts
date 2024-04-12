@@ -69,3 +69,20 @@ function updatePreview(): void {
       });
   }
 }
+
+
+// new document function
+function addNewDocument(): void {
+  const docNameUneditables = document.querySelectorAll(".doc-name-uneditable");
+  let count = 0;
+
+  for (const element of docNameUneditables) {
+      const textContent = element.textContent;
+      if (textContent && textContent.includes('untitled-document')) {
+          count++;
+      }
+  }
+
+  createNewDocDiv(Date.now(), `untitled-document(${count}).md`, untitledText);
+}
+
