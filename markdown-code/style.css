@@ -13,6 +13,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    height: 50px;
   }
   
   /* Navbar left side */
@@ -50,18 +51,23 @@
   }
   
   /* Button styles */
+  .menu-button{
+    background-color: #333;
+    padding: 8px 16px;
+
+  }
   .delete-button,
   .save-button {
     background-color: #dc3545;
-    color: white;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
   }
+
   
   .save-button {
-    background-color: #bc4325;
+    background-color: #E46643;
     margin-left: 10px;
   }
   /* Sidebar styles */
@@ -97,33 +103,38 @@
   }
 
 
-  /* Content styles */
-.content {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide into two equal parts */
-    grid-gap: 20px; /* Gap between the two sections */
+/* Container styles */
+.container {
+    display: flex;
+    height: 100vh;
   }
   
-  .content-left,
-  .content-right {
+  /* Markup and Preview styles */
+  .markup,
+  .preview {
+    flex: 1;
     padding: 20px;
+    color: #7C8187;
   }
   
-  .content-left h2,
-  .content-right h2 {
+  .markup {
+    border-right: 1px solid #ccc;
+  }
+  
+  /* Additional styles */
+  h2 {
     margin-bottom: 10px;
   }
   
   #markup-input {
     width: 100%;
-    height: calc(100vh - 40px); /* Height of the viewport minus padding */
+    height: 100%;
     resize: vertical;
   }
   
   #preview-output {
     border: 1px solid #ccc;
     padding: 10px;
-    height: calc(100vh - 40px); /* Height of the viewport minus padding */
+    height: 100%;
     overflow-y: auto;
   }
-  
