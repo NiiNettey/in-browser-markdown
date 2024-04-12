@@ -121,3 +121,17 @@ function saveChangesToLocal(): void {
 
   localStorage.setItem(docNameEditable.value, JSON.stringify(documentData));
 }
+
+// load document function
+async function loadDocuments(): Promise<void> {
+  try {
+      const response = await fetch('./public/data.json');
+      const docs = await response.json();
+
+      for (const doc of docs) {
+          createNewDocDiv(doc.createdAt, doc.name, doc.content);
+      }
+  } catch (error) {
+      console.error('Error loading documents:', error);
+  }
+}
