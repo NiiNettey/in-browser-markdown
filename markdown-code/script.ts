@@ -11,3 +11,35 @@ function themeOnLoad(): void {
   } 
 }
 
+// Markdown functions
+function mark(markdown: string): string {
+  // Regular expressions to match Markdown syntax
+  const headingRegex = /^(#{1,6})\s+(.*)/;
+  const boldRegex = /\*\*(.*?)\*\*/g;
+  const italicRegex = /\*(.*?)\*/g;
+  const blockquoteRegex = /^>\s+(.*)/;
+  const orderedListRegex = /^\d+\.\s+(.*)/;
+  const unorderedListRegex = /^-\s+(.*)/;
+  const codeRegex = /`(.*?)`/g;
+  const horizontalRuleRegex = /^---$/;
+  const linkRegex = /\[([^\[]+)\]\(([^\)]+)\)/g;
+  const imageRegex = /!\[([^\[]+)\]\(([^\)]+)\)/g;
+
+  // Replace Markdown syntax with HTML tags
+  markdown = markdown.replace(headingRegex, (_match, hashes, text) => {
+      const level = hashes.length;
+      return `<h${level}>${text}</h${level}>`;
+  });
+
+  markdown = markdown.replace(boldRegex, '<strong>$1</strong>');
+  markdown = markdown.replace(italicRegex, '<em>$1</em>');
+  markdown = markdown.replace(blockquoteRegex, '<blockquote>$1</blockquote>');
+  markdown = markdown.replace(orderedListRegex, '<ol><li>$1</li></ol>');
+  markdown = markdown.replace(unorderedListRegex, '<ul><li>$1</li></ul>');
+  markdown = markdown.replace(codeRegex, '<code>$1</code>');
+  markdown = markdown.replace(horizontalRuleRegex, '<hr>');
+  markdown = markdown.replace(linkRegex, '<a href="$2">$1</a>');
+  markdown = markdown.replace(imageRegex, '<img src="$2" alt="$1">');
+
+  return markdown;
+}
