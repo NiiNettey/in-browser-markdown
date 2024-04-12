@@ -43,3 +43,29 @@ function mark(markdown: string): string {
 
   return markdown;
 }
+
+// Preview display Function
+function displayPreview(dpname: string, dpcontent: string): void {
+  const docNameEditable = document.querySelector("#doc-name-editable") as HTMLInputElement | null;
+  const markdownInput = document.getElementById('markdown-input') as HTMLTextAreaElement | null;
+  const preview = document.getElementById('preview-content');
+
+  if (docNameEditable && markdownInput && preview) {
+      docNameEditable.value = dpname;
+      markdownInput.value = dpcontent;
+      preview.innerHTML = mark(markdownInput.value);
+  }
+}
+
+function updatePreview(): void {
+  const markdownInput = document.getElementById('markdown-input') as HTMLTextAreaElement | null;
+  const preview = document.getElementById('preview-content');
+
+  if (markdownInput && preview) {
+      markdownInput.addEventListener('input', () => {
+          if (preview) {
+              preview.innerHTML = mark(markdownInput.value);
+          }
+      });
+  }
+}
