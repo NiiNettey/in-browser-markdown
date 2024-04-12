@@ -94,3 +94,30 @@ function updateDocumentName(): void {
       element.innerHTML = docNameEditable.value;
   }
 }
+
+// saving changes to local storage
+function saveChangesToLocal(): void {
+  const newDocs = document.querySelectorAll(".new-doc");
+
+  for (const doc of newDocs) {
+      if (doc.innerHTML.includes(docNameEditable.value)) {
+          let docName = docNameEditable.value.split(".")[0];
+          if (docName.includes('(') || docName.includes(')')) {
+              docName = docName.replace(/\(|\)/g, '');
+          }
+
+          doc.id = `"new-doc-${docName}"`;
+          doc.querySelector(".doc-name-uneditable").id = docName;
+          doc.querySelector(".doc-content").textContent = markdownInput.value;
+      }
+  }
+
+  const currentDate = new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).replace(',', '');
+  const documentData = {
+      datesaved: currentDate,
+      namesaved: docNameEditable.value,
+      contentsaved: markdownInput.value
+  };
+
+  localStorage.setItem(docNameEditable.value, JSON.stringify(documentData));
+}
