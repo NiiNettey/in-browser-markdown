@@ -13,7 +13,7 @@ function themeOnLoad(): void {
 }
 
 toggleTheme();
-window.onload = themeOnLoad();
+window.onload = themeOnLoad;
 
 
 // --------------------------- Rename, load, add, save changes -------------------------- //
