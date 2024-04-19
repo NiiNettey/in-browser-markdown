@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const marked_1 = require("marked");
 // ---------- For toggling btn day & night mode + prefers-color-scheme on load ---------- //
 function toggleTheme() {
     var _a;
@@ -35,11 +36,11 @@ marked.setOptions({
 function displayPreview(dpname, dpcontent) {
     docNameEditable.value = dpname;
     markdownInput.value = dpcontent;
-    preview.innerHTML = marked.parse(markdownInput.value);
+    preview.innerHTML = marked_1.Marked.parse(markdownInput.value);
 }
 function updatePreview() {
     markdownInput.addEventListener('input', () => {
-        preview.innerHTML = marked.parse(markdownInput.value);
+        preview.innerHTML = marked_1.Marked.parse(markdownInput.value);
     });
 }
 function createNewDocDiv(cdate, cname, ccontent) {
@@ -156,7 +157,7 @@ const delDoc = () => {
     }
     docNameEditable.value = 'welcome.md'; //reset to default
     markdownInput.value = welcomeText; //reset to default
-    preview.innerHTML = marked.parse(markdownInput.value);
+    preview.innerHTML = marked_1.Marked.parse(markdownInput.value);
 };
 previewToggleDiv.addEventListener("click", () => {
     previewToggle.classList.toggle("hide");
