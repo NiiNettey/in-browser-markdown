@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 // ---------- For toggling btn day & night mode + prefers-color-scheme on load ---------- //
 function toggleTheme() {
     var _a;
