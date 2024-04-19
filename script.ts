@@ -1,5 +1,3 @@
-import { Marked } from "marked";
-
 // ---------- For toggling btn day & night mode + prefers-color-scheme on load ---------- //
 function toggleTheme(): void {
     document.getElementById("toggle")?.addEventListener("click", () => { //Have to target the input not label
