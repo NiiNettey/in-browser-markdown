@@ -48,7 +48,7 @@ function createNewDocDiv(cdate, cname, ccontent) {
     const newDoc = document.createElement('div');
     newDoc.classList.add('new-doc');
     const iconDoc = document.createElement('img');
-    iconDoc.src = './public/assets/icon-document.svg';
+    iconDoc.src = './assets/icon-document.svg';
     iconDoc.alt = 'icon-doc';
     iconDoc.classList.add('icon-doc');
     const docDateName = document.createElement('div');
@@ -83,7 +83,7 @@ function createNewDocDiv(cdate, cname, ccontent) {
 }
 const loadDocs = () => __awaiter(void 0, void 0, void 0, function* () {
     allDocs.innerHTML = "";
-    let response = yield fetch('./public/data.json');
+    let response = yield fetch('./data.json');
     let docs = yield response.json();
     for (let i = 0; i < docs.length; i++) {
         const createdDate = docs[i].createdAt, name = docs[i].name, content = docs[i].content;

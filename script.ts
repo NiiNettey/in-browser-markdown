@@ -1,3 +1,4 @@
+
 // ---------- For toggling btn day & night mode + prefers-color-scheme on load ---------- //
 function toggleTheme(): void {
     document.getElementById("toggle")?.addEventListener("click", () => { //Have to target the input not label
@@ -54,7 +55,7 @@ function createNewDocDiv(cdate: string, cname: string, ccontent: string): void {
     newDoc.classList.add('new-doc');
 
     const iconDoc: HTMLImageElement = document.createElement('img');
-    iconDoc.src = './public/assets/icon-document.svg';
+    iconDoc.src = './assets/icon-document.svg';
     iconDoc.alt= 'icon-doc';
     iconDoc.classList.add('icon-doc');
 
@@ -101,7 +102,7 @@ function createNewDocDiv(cdate: string, cname: string, ccontent: string): void {
 
 const loadDocs = async(): Promise<void> => { //the markdown input section always shows content of last entry by default on load
     allDocs.innerHTML = "";
-    let response: Response = await fetch('./public/data.json');
+    let response: Response = await fetch('./data.json');
     let docs: any[] = await response.json();
     for (let i=0; i<docs.length; i++) {
         const createdDate: string = docs[i].createdAt,
