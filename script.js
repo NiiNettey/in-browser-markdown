@@ -8,8 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const marked_1 = require("marked");
 // ---------- For toggling btn day & night mode + prefers-color-scheme on load ---------- //
 function toggleTheme() {
     var _a;
@@ -29,14 +27,18 @@ const welcomeText = "# Welcome to Markdown\n\nMarkdown is a lightweight markup l
 const untitledText = "# This is a new untitled document.\n\nStart typing here to see preview and use the editor.";
 const docNameEditable = document.querySelector("#doc-name-editable"), saveBtn = document.querySelector("#save-change-btn"), addNewDocBtn = document.querySelector("#new-doc-btn"), docNavSection = document.querySelector(".docs-nav-section"), allDocs = document.querySelector(".all-docs");
 let markdownInput = document.getElementById('markdown-input'), preview = document.getElementById('preview-content');
+marked.setOptions({
+    mangle: false,
+    headerIds: false
+});
 function displayPreview(dpname, dpcontent) {
     docNameEditable.value = dpname;
     markdownInput.value = dpcontent;
-    preview.innerHTML = marked_1.marked.parse(markdownInput.value);
+    preview.innerHTML = marked.parse(markdownInput.value);
 }
 function updatePreview() {
     markdownInput.addEventListener('input', () => {
-        preview.innerHTML = marked_1.marked.parse(markdownInput.value);
+        preview.innerHTML = marked.parse(markdownInput.value);
     });
 }
 function createNewDocDiv(cdate, cname, ccontent) {
@@ -153,7 +155,7 @@ const delDoc = () => {
     }
     docNameEditable.value = 'welcome.md'; //reset to default
     markdownInput.value = welcomeText; //reset to default
-    preview.innerHTML = marked_1.marked.parse(markdownInput.value);
+    preview.innerHTML = marked.parse(markdownInput.value);
 };
 previewToggleDiv.addEventListener("click", () => {
     previewToggle.classList.toggle("hide");

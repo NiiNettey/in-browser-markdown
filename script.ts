@@ -1,4 +1,3 @@
-import { marked } from "marked";
 
 // ---------- For toggling btn day & night mode + prefers-color-scheme on load ---------- //
 function toggleTheme(): void {
@@ -30,16 +29,20 @@ const docNameEditable: HTMLInputElement = document.querySelector("#doc-name-edit
 let markdownInput: HTMLTextAreaElement = document.getElementById('markdown-input') as HTMLTextAreaElement,
     preview: HTMLElement = document.getElementById('preview-content') as HTMLElement;
 
+marked.setOptions ({
+    mangle: false,
+    headerIds: false
+});
 
 function displayPreview(dpname: string, dpcontent: string): void {
     docNameEditable.value = dpname;
     markdownInput.value = dpcontent;
-    preview.innerHTML = marked.parse(markdownInput.value) as string;
+    preview.innerHTML = marked.parse(markdownInput.value);
 }
 
 function updatePreview(): void {
     markdownInput.addEventListener('input', () => {
-        preview.innerHTML = marked.parse(markdownInput.value) as string;
+        preview.innerHTML = marked.parse(markdownInput.value);
     });
 }
 
@@ -189,7 +192,7 @@ const delDoc = (): void => {
     }
     docNameEditable.value = 'welcome.md'; //reset to default
     markdownInput.value = welcomeText; //reset to default
-    preview.innerHTML = marked.parse(markdownInput.value) as string;
+    preview.innerHTML = marked.parse(markdownInput.value);
 }
 
 previewToggleDiv.addEventListener("click", () => {
